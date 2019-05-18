@@ -17,8 +17,34 @@ class App extends Component {
   };
 
   render() {
-    console.log(this.state);
-    return <h1 className="text-center my-5">THIS IS A TEST</h1>;
+    const { wines } = this.state;
+
+    return (
+      <div className="container">
+        <h1 className="my-5">THIS IS A TEST</h1>
+        <div>
+          {wines.length > 0 ? (
+            wines.map(wine => (
+              <div key={wine.id}>
+                <h3>{wine.name}</h3>
+                <ul>
+                  <li>Name: {wine.name}</li>
+                  <li>Size: {wine.size}</li>
+                  <li>Vintage: {wine.vintage}</li>
+                  <li>Varietal: {wine.varietal}</li>
+                  <li>Bottle Price: {wine.bottle_price}</li>
+                  <li>Case Size: {wine.case_size}</li>
+                  <li>Case Price: {wine.case_price}</li>
+                  <li>Description: {wine.size}</li>
+                </ul>
+              </div>
+            ))
+          ) : (
+            <h2>Loading wines...</h2>
+          )}
+        </div>
+      </div>
+    );
   }
 }
 
