@@ -4,6 +4,8 @@ import Container from './components/common/Container';
 import Card from './components/common/Card';
 import ColContainer from './components/common/ColContainer';
 import Column from './components/common/Column';
+import Message from './components/common/Message';
+import Title from './components/Title';
 import 'bulma-helpers/css/bulma-helpers.min.css';
 
 class App extends Component {
@@ -26,9 +28,7 @@ class App extends Component {
 
     return (
       <Container>
-        <h1 className="has-margin-top-15 has-margin-bottom-15 is-size-1 has-text-centered">
-          THIS IS A TEST
-        </h1>
+        <Title title="Perfecto Importers" />
         <ColContainer>
           {wines.length > 0 ? (
             wines.map(wine => (
@@ -39,23 +39,21 @@ class App extends Component {
                   subtitle={wine.varietal}
                   helper="has-margin-top-15 has-margin-bottom-15"
                 >
-                  <div>
+                  <Message color="is-danger" title={wine.varietal}>
                     <ul>
-                      <li>Name: {wine.name}</li>
                       <li>Size: {wine.size}</li>
                       <li>Vintage: {wine.vintage}</li>
-                      <li>Varietal: {wine.varietal}</li>
                       <li>Bottle Price: {wine.bottle_price}</li>
                       <li>Case Size: {wine.case_size}</li>
                       <li>Case Price: {wine.case_price}</li>
-                      <li>Description: {wine.size}</li>
+                      <li>Description: {wine.description}</li>
                     </ul>
-                  </div>
+                  </Message>
                 </Card>
               </Column>
             ))
           ) : (
-            <h2>Loading wines...</h2>
+            <h2 className="is-size-2 has-text-centered">Loading wines...</h2>
           )}
         </ColContainer>
       </Container>
